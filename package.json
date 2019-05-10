@@ -1,0 +1,22 @@
+{
+  "name": "vatsla16",
+  "version": "1.0.0",
+  "description": "Vatsla personal site",
+  "main": "index.js",
+  "scripts": {
+    "compile:sass": "node-sass sass/index.scss css/style.css -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vatsla16/vatsla16.github.io.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vatsla16/vatsla16.github.io/issues"
+  },
+  "homepage": "https://github.com/vatsla16/vatsla16.github.io#readme",
+  "devDependencies": {
+    "node-sass": "^4.11.0"
+  }
+}

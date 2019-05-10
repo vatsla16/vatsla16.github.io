@@ -1,0 +1,40 @@
+/*---------------------------------------
+  Service section
+-----------------------------------------*/
+
+.service-thumb {
+  background: #ffffff;
+  border-radius: 5px;
+  padding: 42px 22px;
+  cursor: crosshair;
+  position: relative;
+  top: 0;
+  -webkit-transition: all ease-in-out 0.4s;
+  transition: all ease-in-out 0.4s;
+}
+
+.service-thumb:hover {
+  background: #2b2b2b;
+  top: -5px;
+}
+
+.service-thumb:hover .fa,
+.service-thumb:hover h4 {
+  color: #ffffff;
+}
+
+.service-thumb h4 {
+  padding-bottom: 5px;
+}
+
+.service-thumb .fa {
+  color: #7682cc;
+  font-size: 62px;
+  text-align: center;
+  margin-top: 32px;
+  margin-bottom: 22px;
+}
+
+.bg-grey .fa {
+  color: #ffffff;
+}
