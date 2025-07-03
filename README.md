@@ -15,9 +15,9 @@ I’m a Software Engineer at Proofpoint with an M.Sc. in Computer Science from C
 
 ## Experience
 
-- **Software Engineer @ Proofpoint** (Jul 2022 – Present)  
-- **Software Engineer @ Industrial Agency** (May 2021 – Jul 2022)  
-- **Full-Stack Engineer @ Terabit.ca** (May 2020 – May 2021)  
+- Software Engineer @ Proofpoint (Jul 2022 – Present)  
+- Software Engineer @ Industrial Agency (May 2021 – Jul 2022)  
+- Full-Stack Engineer @ Terabit.ca (May 2020 – May 2021)  
 - *…and more; see the [Experience](https://vatsla16.github.io/#experience) section on my site.*
 
 ## Projects
