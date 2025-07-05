@@ -1,4 +1,10 @@
-// Portfolio JavaScript - Optimized for performance and accessibility
+(function(){
+  const seg = window.location.pathname.split('/')[1];
+  if (seg === 'anime-tinder' || seg === 'sfb') {
+    window.location.replace(`/${seg}/index.html`);
+  }
+})();
+
 document.addEventListener('DOMContentLoaded', () => {
   // ===== PAGE LOADER =====
   const pageLoader = document.getElementById('page-loader');
@@ -237,4 +243,31 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+
+  // 404 page letter grid
+  const letters = [
+    'l','o','s','t','i','n','m','e','t','a','x','l',
+    '4','0','4',
+    'y','y','w','v','b','o','t','d','y','p','a',
+    'p','a','g','e',
+    'v','j','a','n','o','t','s','c','e','w','v','x','e','p',
+    'c','f','h','q','e',
+    'f','o','u','n','d',
+    's','w','q','v','g','o','b','a','c','k'
+  ];
+
+  const grid = document.getElementById('letter-grid');
+  letters.forEach((char, idx) => {
+    const li = document.createElement('li');
+    li.textContent = char;
+    const is404   = idx >= 12 && idx <= 14;
+    const isNot   = idx >= 33 && idx <= 35;
+    const isFound = idx >= 49 && idx <= 53;
+    if (is404 || isNot || isFound) {
+      li.classList.add('highlight');
+    } else {
+      li.classList.add('default');
+    }
+    grid.appendChild(li);
+  });
 }); 
