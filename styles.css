@@ -648,9 +648,45 @@ body {
 }
 
 /* ===== ERROR PAGE ===== */
+.nf-main {
+	display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  padding: 0 16px;
+  min-height: 70vh;
+}
+
+.nf-main .letter-grid {
+	display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 0.5%;
+  list-style: none;
+  margin: 24px 0;
+  width: 100%;
+}
+
+.nf-main .letter-grid li {
+	background: transparent;
+  color: var(--primary-text);
+	margin-right: 0.5%;
+	margin-bottom: 0.5%;
+  padding: 0;
+  display: block;
+  text-align: center;
+  text-transform: uppercase;
+  overflow: hidden;
+  font-size: 1.6vw;
+  font-weight: 300;
+}
+
+.nf-main .letter-grid li.highlight {
+	background: var(--accent);
+  color: var(--primary-bg);
+	font-weight: 700;
+}
+
 .error-section {
   padding: 6rem 0;
-  min-height: 70vh;
   display: flex;
   align-items: center;
 }
@@ -661,18 +697,11 @@ body {
   margin: 0 auto;
 
   h1 {
-    font-size: 6rem;
+    font-size: 3rem;
     font-weight: bold;
     color: var(--accent);
     margin: 0;
     line-height: 1;
-  }
-
-  h2 {
-    font-size: 2rem;
-    color: var(--primary-text);
-    margin: 1rem 0;
-    font-weight: 100;
   }
 
   p {
@@ -689,11 +718,10 @@ body {
   align-items: center;
   gap: 1rem;
   justify-content: center;
-  margin-bottom: 3rem;
   flex-wrap: wrap;
 }
 
-.btn-primary, .btn-secondary {
+.btn-primary {
   padding: 0.75rem 1.5rem;
   border-radius: 6px;
   text-decoration: none;
@@ -712,50 +740,6 @@ body {
   &:hover, &:focus {
     background: var(--link-hover);
     transform: translateY(-2px);
-  }
-}
-
-.btn-secondary {
-  background: transparent;
-  color: var(--primary-text);
-  border-color: var(--border-color);
-
-  &:hover, &:focus {
-    background: var(--border-color);
-    transform: translateY(-2px);
-  }
-}
-
-.error-suggestions {
-  text-align: left;
-  max-width: 400px;
-  margin: 0 auto;
-
-  h3 {
-    color: var(--primary-text);
-    font-size: 1.2rem;
-    margin-bottom: 1rem;
-    font-weight: 100;
-  }
-
-  ul {
-    list-style: none;
-    padding: 0;
-
-    li {
-      margin-bottom: 0.5rem;
-
-      a {
-        color: var(--accent);
-        text-decoration: none;
-        transition: color 0.2s;
-
-        &:hover, &:focus {
-          color: var(--link-hover);
-          text-decoration: underline;
-        }
-      }
-    }
   }
 }
 
@@ -791,6 +775,19 @@ body {
         border-bottom-color: var(--accent);
       }
     }
+  }
+
+  .nf-main {
+    grid-template-columns: 1fr;
+  }
+
+  .nf-main .letter-grid-container {
+    padding-top: 3rem;
+  }
+
+  .nf-main .error-section {
+    padding-bottom: 0;
+    padding-top: 3rem;
   }
 }
 

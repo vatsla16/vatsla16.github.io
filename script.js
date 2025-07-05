@@ -1,4 +1,10 @@
-// Portfolio JavaScript - Optimized for performance and accessibility
+(function(){
+  const seg = window.location.pathname.split('/')[1];
+  if (seg === 'anime-tinder') {
+    window.location.replace(`/${seg}/`);
+  }
+})();
+
 document.addEventListener('DOMContentLoaded', () => {
   // ===== PAGE LOADER =====
   const pageLoader = document.getElementById('page-loader');
@@ -41,116 +47,120 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ===== TYPING ANIMATION =====
   const typingText = document.getElementById('typing-text');
-  const textToType = "hi, i'm Vatsla.";
-  let charIndex = 0;
-  
-  function type() {
-    if (charIndex < textToType.length) {
-      typingText.textContent += textToType.charAt(charIndex);
-      charIndex++;
-      setTimeout(type, 100);
-    } else {
-      typingText.classList.add('typing-done'); 
+  if (typingText) {
+    const textToType = "hi, i'm Vatsla.";
+    let charIndex = 0;
+    
+    function type() {
+      if (charIndex < textToType.length) {
+        typingText.textContent += textToType.charAt(charIndex);
+        charIndex++;
+        setTimeout(type, 100);
+      } else {
+        typingText.classList.add('typing-done'); 
+      }
     }
-  }
   
-  type();
+    type();
+  }
 
   // ===== PARTICLE ANIMATION =====
   const canvas = document.getElementById('particle-canvas');
-  const ctx = canvas.getContext('2d');
-  let particles = [];
-  let animationId = null;
+  if (canvas) {
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+    let animationId = null;
 
-  const setupCanvas = () => {
-    canvas.width = window.innerWidth;
-    canvas.height = canvas.parentElement.clientHeight;
-  };
+    const setupCanvas = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = canvas.parentElement.clientHeight;
+    };
 
-  class Particle {
-    constructor(x, y) {
-      this.x = x;
-      this.y = y;
-      this.size = Math.random() * 2 + 1;
-      this.speedX = Math.random() * 2 - 1;
-      this.speedY = Math.random() * 2 - 1;
+    class Particle {
+      constructor(x, y) {
+        this.x = x;
+        this.y = y;
+        this.size = Math.random() * 2 + 1;
+        this.speedX = Math.random() * 2 - 1;
+        this.speedY = Math.random() * 2 - 1;
+      }
+      
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+
+        if (this.size > 0.2) this.size -= 0.01;
+        if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+        if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+      }
+      
+      draw() {
+        ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--accent');
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+      }
     }
-    
-    update() {
-      this.x += this.speedX;
-      this.y += this.speedY;
 
-      if (this.size > 0.2) this.size -= 0.01;
-      if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
-      if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
-    }
-    
-    draw() {
-      ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--accent');
-      ctx.beginPath();
-      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-      ctx.fill();
-    }
-  }
+    const initParticles = () => {
+      particles = [];
+      const numberOfParticles = Math.min((canvas.width * canvas.height) / 9000, 100);
+      for (let i = 0; i < numberOfParticles; i++) {
+        particles.push(new Particle(Math.random() * canvas.width, Math.random() * canvas.height));
+      }
+    };
 
-  const initParticles = () => {
-    particles = [];
-    const numberOfParticles = Math.min((canvas.width * canvas.height) / 9000, 100);
-    for (let i = 0; i < numberOfParticles; i++) {
-      particles.push(new Particle(Math.random() * canvas.width, Math.random() * canvas.height));
-    }
-  };
+    const connectParticles = () => {
+      const accentColor = getComputedStyle(document.documentElement).getPropertyValue('--accent');
+      ctx.strokeStyle = accentColor;
+      ctx.lineWidth = 0.2;
+      
+      for (let a = 0; a < particles.length; a++) {
+        for (let b = a + 1; b < particles.length; b++) {
+          const dx = particles[a].x - particles[b].x;
+          const dy = particles[a].y - particles[b].y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
 
-  const connectParticles = () => {
-    const accentColor = getComputedStyle(document.documentElement).getPropertyValue('--accent');
-    ctx.strokeStyle = accentColor;
-    ctx.lineWidth = 0.2;
-    
-    for (let a = 0; a < particles.length; a++) {
-      for (let b = a + 1; b < particles.length; b++) {
-        const dx = particles[a].x - particles[b].x;
-        const dy = particles[a].y - particles[b].y;
-        const distance = Math.sqrt(dx * dx + dy * dy);
-
-        if (distance < 100) {
-          ctx.beginPath();
-          ctx.moveTo(particles[a].x, particles[a].y);
-          ctx.lineTo(particles[b].x, particles[b].y);
-          ctx.stroke();
+          if (distance < 100) {
+            ctx.beginPath();
+            ctx.moveTo(particles[a].x, particles[a].y);
+            ctx.lineTo(particles[b].x, particles[b].y);
+            ctx.stroke();
+          }
         }
       }
-    }
-  };
+    };
 
-  const animate = () => {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    
-    for (const particle of particles) {
-      particle.update();
-      particle.draw();
-    }
-    
-    connectParticles();
-    animationId = requestAnimationFrame(animate);
-  };
-  
-  // Respect reduced motion preference
-  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (!prefersReducedMotion && canvas) {
-    setupCanvas();
-    initParticles();
-    animate();
-    
-    const handleResize = () => {
-      if (animationId) {
-        cancelAnimationFrame(animationId);
+    const animate = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      for (const particle of particles) {
+        particle.update();
+        particle.draw();
       }
+      
+      connectParticles();
+      animationId = requestAnimationFrame(animate);
+    };
+    
+    // Respect reduced motion preference
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!prefersReducedMotion && canvas) {
       setupCanvas();
       initParticles();
       animate();
-    };
-    
-    window.addEventListener('resize', handleResize);
+      
+      const handleResize = () => {
+        if (animationId) {
+          cancelAnimationFrame(animationId);
+        }
+        setupCanvas();
+        initParticles();
+        animate();
+      };
+      
+      window.addEventListener('resize', handleResize);
+    }
   }
 
   // ===== SCROLL ANIMATIONS =====
@@ -235,6 +245,36 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
         scrollToTop();
       }
+    });
+  }
+
+  // ===== 404 letter-grid (only on root 404) =====
+  const grid = document.getElementById('letter-grid');
+  if (grid) {
+    const letters = [
+      'l','o','s','t','i','n','m','e','t','a','x','l',
+      '4','0','4',
+      'y','y','w','v','b','o','t','d','y','p','a',
+      'p','a','g','e',
+      'v','j','a','n','o','t','s','c','e','w','v','x','e','p',
+      'c','f','h','q','e',
+      'f','o','u','n','d',
+      's','w','q','v','g','o','b','a','c','k'
+    ];
+
+    const grid = document.getElementById('letter-grid');
+    letters.forEach((char, idx) => {
+      const li = document.createElement('li');
+      li.textContent = char;
+      const is404   = idx >= 12 && idx <= 14;
+      const isNot   = idx >= 33 && idx <= 35;
+      const isFound = idx >= 49 && idx <= 53;
+      if (is404 || isNot || isFound) {
+        li.classList.add('highlight');
+      } else {
+        li.classList.add('default');
+      }
+      grid.appendChild(li);
     });
   }
 }); 
