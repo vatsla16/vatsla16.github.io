@@ -666,7 +666,7 @@ body {
 }
 
 .nf-main .letter-grid li {
-	background: transparent;
+	background: rgba(71, 85, 105, 0.3);
   color: var(--primary-text);
 	margin-right: 0.5%;
 	margin-bottom: 0.5%;
