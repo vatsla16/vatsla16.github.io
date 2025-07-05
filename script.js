@@ -1,10 +1,3 @@
-(function(){
-  const seg = window.location.pathname.split('/')[1];
-  if (seg === 'anime-tinder') {
-    window.location.replace(`/${seg}/`);
-  }
-})();
-
 document.addEventListener('DOMContentLoaded', () => {
   // ===== PAGE LOADER =====
   const pageLoader = document.getElementById('page-loader');
