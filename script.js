@@ -1,6 +1,10 @@
 (function(){
   const seg = window.location.pathname.split('/')[1];
-  if (seg === 'anime-tinder' || seg === 'sfb') {
+  if (seg === 'anime-tinder') {
+    window.location.replace(`/${seg}/#`);
+  }
+
+  if(seg === 'sfb') {
     window.location.replace(`/${seg}/index.html`);
   }
 })();
