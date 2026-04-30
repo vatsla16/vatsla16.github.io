@@ -1,0 +1,24 @@
+{
+  "name": "Thurstan OBU Canada",
+  "short_name": "Thurstan OBU",
+  "description": "Thurstan College Old Boys' Union Canada alumni website.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f6f9ff",
+  "theme_color": "#173a8a",
+  "icons": [
+    {
+      "src": "/assets/images/logo.webp",
+      "sizes": "231x200",
+      "type": "image/webp",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/images/logo-crest.webp",
+      "sizes": "313x318",
+      "type": "image/webp",
+      "purpose": "any"
+    }
+  ]
+}

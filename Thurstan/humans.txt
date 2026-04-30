@@ -1,0 +1,8 @@
+/* TEAM */
+Site: Thurstan OBU Canada
+Role: Alumni website
+
+/* SITE */
+Standards: HTML, CSS, JavaScript
+Language: English
+Primary URL: https://thurstanobucanada.org/

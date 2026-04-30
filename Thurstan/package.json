@@ -1,0 +1,17 @@
+{
+  "name": "thurstan-obu-canada-site",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "tailwindcss -i ./src/styles/tailwind.css -o ./assets/css/styles.css --watch",
+    "build": "tailwindcss -i ./src/styles/tailwind.css -o ./assets/css/styles.css --minify",
+    "serve": "node scripts/serve.mjs 8020",
+    "serve:8000": "python3 -m http.server 8000",
+    "serve:8010": "python3 -m http.server 8010",
+    "serve:python": "python3 -m http.server 8020"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.20",
+    "tailwindcss": "^3.4.17"
+  }
+}

@@ -1,0 +1,3 @@
+Contact: mailto:committee@thurstanobucanada.org
+Preferred-Languages: en
+Canonical: https://thurstanobucanada.org/.well-known/security.txt
